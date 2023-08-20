@@ -12,6 +12,19 @@ class BaseServices {
     });
     this.baseURL = "http://localhost:8000/api/v1/";
     this.configHeaders = configHeaders;
+    this.http.interceptors.request.use(
+      async (config) => {
+        const token = localStorage.getItem("accessToken") || "";
+        config.headers = {
+          "content-type": "application/json",
+          "x-access-token": token,
+        };
+        return config;
+      },
+      (error) => {
+        Promise.reject(error);
+      }
+    );
     this.http.interceptors.response.use(
       (response) => response,
       (error) => {
@@ -34,39 +47,24 @@ class BaseServices {
     );
   }
 
-  setConfigHeaders() {
-    const token = localStorage.get("token") || "";
-    const config = {
-      headers: {
-        "content-type": "application/json",
-        "x-access-token": `Bearer ${token}`,
-      },
-      ...this.configHeaders,
-    };
-    return config;
-  }
-
   get(url, configHeaders) {
-    return this.http.get(url, { ...this.setConfigHeaders(), ...configHeaders });
+    return this.http.get(url, { ...configHeaders });
   }
 
   post(url, data, configHeaders) {
     return this.http.post(url, data, {
-      ...this.setConfigHeaders(),
       ...configHeaders,
     });
   }
 
   put(url, data, configHeaders) {
     return this.http.put(url, data, {
-      ...this.setConfigHeaders(),
       ...configHeaders,
     });
   }
 
   delete(url, configHeaders) {
     return this.http.delete(url, {
-      ...this.setConfigHeaders(),
       ...configHeaders,
     });
   }

@@ -10,24 +10,18 @@ const AuthProvider = ({ children }) => {
     user: {},
   });
 
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = async () => {
     try {
-      const data = {
-        email,
-        password,
-      };
-      const response = await authService.login(data);
-      if (response) {
+      const response = await authService.getMe();
+      if (response.status === 200) {
         setAuth({
           isAuthenticated: true,
-          user: response.userInfo,
+          user: response.data,
         });
-        return true;
       }
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error?.response?.data?.message);
     }
-    return false;
   };
 
   const handleLogout = () => {
