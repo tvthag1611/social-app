@@ -6,34 +6,39 @@ import NotAuthRoute from "./routers/NotAuthRoute";
 import PrivateRoute from "./routers/PrivateRoute";
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <AuthProvider>
-        <div className="app">
-          <Routes>
-            {routes.map((route, index) => {
-              const { path, component, isPrivate, notAuth } = route;
-              return (
-                <Route
-                  key={index}
-                  path={path}
-                  element={
-                    isPrivate ? (
-                      <PrivateRoute component={component} />
-                    ) : notAuth ? (
-                      <NotAuthRoute component={component} />
-                    ) : (
-                      component
-                    )
-                  }
-                />
-              );
-            })}
-          </Routes>
-        </div>
-      </AuthProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <AuthProvider>
+                <div className="app">
+                    <Routes>
+                        {routes.map((route, index) => {
+                            const { path, component, isPrivate, notAuth } =
+                                route;
+                            return (
+                                <Route
+                                    key={index}
+                                    path={path}
+                                    element={
+                                        isPrivate ? (
+                                            <PrivateRoute
+                                                component={component}
+                                            />
+                                        ) : notAuth ? (
+                                            <NotAuthRoute
+                                                component={component}
+                                            />
+                                        ) : (
+                                            component
+                                        )
+                                    }
+                                />
+                            );
+                        })}
+                    </Routes>
+                </div>
+            </AuthProvider>
+        </BrowserRouter>
+    );
 };
 
 export default App;
