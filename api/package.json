@@ -5,11 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "server": "nodemon ./api/server.js",
-    "client": "yarn --cwd client start",
-    "npm-client": "npm start --prefix client",
-    "all": "yarn run server & yarn run client",
-    "npm-all": "npm run server & npm run npm-client"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "axios": "^1.4.0",
