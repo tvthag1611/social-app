@@ -4,12 +4,14 @@ import AuthProvider from "./contexts/AuthContext/AuthProvider.js";
 import routes from "./routers/config.js";
 import NotAuthRoute from "./routers/NotAuthRoute";
 import PrivateRoute from "./routers/PrivateRoute";
+import Header from "./components/Header";
 
 const App = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
                 <div className="app">
+                    <Header />
                     <Routes>
                         {routes.map((route, index) => {
                             const { path, component, isPrivate, notAuth } =

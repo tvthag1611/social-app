@@ -20,35 +20,21 @@ const formikConfig = {
             .oneOf([Yup.ref("password"), null], "Passwords must match")
             .required("Confirm password is required"),
     }),
-    onSubmit: async (values, { setSubmitting, setErrors }) => {
-        try {
-            // const register = await authService.register({
-            //     fullname: values.fullname || "",
-            //     password: values.password || "",
-            // });
-            // if (register.status === 200) {
-            //     alert("Đăng kí thành công");
-            // }
-            alert("Registered!");
-        } catch (error) {
-            setErrors({
-                submit: "Registration failed. Please try again later.",
-            });
-        } finally {
-            setSubmitting(false);
-        }
+    onSubmit: async (values) => {
+        // const register = await authService.register({
+        //     fullname: values.fullname || "",
+        //     password: values.password || "",
+        // });
+        // if (register.status === 200) {
+        //     alert("Đăng kí thành công");
+        // }
+        alert("Registered!");
     },
 };
 
 const RegisterPage = () => {
-    const {
-        handleSubmit,
-        handleChange,
-        values,
-        errors,
-        touched,
-        isSubmitting,
-    } = useFormik(formikConfig);
+    const { handleSubmit, handleChange, values, errors, touched } =
+        useFormik(formikConfig);
 
     return (
         <div className="flex justify-center items-center w-full h-screen bg-gray-100">
@@ -57,9 +43,6 @@ const RegisterPage = () => {
                     <h1 className="font-bold text-xl text-center mb-4">
                         Social Media App
                     </h1>
-                    {errors.submit && (
-                        <div className="text-red-500 mb-4">{errors.submit}</div>
-                    )}
                     <Input
                         type="text"
                         name="fullname"
@@ -98,9 +81,8 @@ const RegisterPage = () => {
                         <Button
                             type="submit"
                             className="w-30 text-black border-2 bg-transparent hover:text-black hover:bg-transparent hover:border-black"
-                            disabled={isSubmitting}
                         >
-                            {isSubmitting ? "Registering..." : "Register"}
+                            Register
                         </Button>
                     </div>
                     <div className="mb-4 mt-4 flex justify-center">
