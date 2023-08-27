@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
+import Input from "../../components/login/Input";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../services/authService";
 
