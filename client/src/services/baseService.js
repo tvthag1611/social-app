@@ -35,9 +35,6 @@ class BaseServices {
               clearLocalStorage();
               window.location.reload();
               return;
-            case 403:
-              window.location.href = "/error403";
-              return;
             default:
               return Promise.reject(error);
           }

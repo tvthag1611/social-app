@@ -1,3 +1,4 @@
+import { message } from "antd";
 import React, { useEffect, useState } from "react";
 import AuthService from "../../services/authService.js";
 import AuthContext from "./AuthContext.js";
@@ -20,7 +21,7 @@ const AuthProvider = ({ children }) => {
         });
       }
     } catch (error) {
-      alert(error?.response?.data?.message);
+      message.error(error?.response?.data?.message || "Error");
     }
   };
 
