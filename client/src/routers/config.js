@@ -1,5 +1,6 @@
 import LoginPage from "../pages/login/index.js";
 import RegisterPage from "../pages/register/index.js";
+import PrivacyPage from "../pages/privacy/index.js";
 
 export const routes = [
   {
@@ -17,5 +18,10 @@ export const routes = [
     component: <RegisterPage />,
     notAuth: true,
   },
+  {
+    path: "/privacy",
+    component: <PrivacyPage />,
+    isPrivate: true,
+  }
 ];
 export default routes;
