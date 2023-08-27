@@ -80,7 +80,7 @@ const RegisterPage = () => {
                     <div className="flex justify-center">
                         <Button
                             type="submit"
-                            className="w-30 text-black border-2 bg-transparent hover:text-black hover:bg-transparent hover:border-black"
+                            className="w-30 text-black border-2 border-black"
                         >
                             Register
                         </Button>
