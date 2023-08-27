@@ -1,8 +1,7 @@
 import { useFormik } from "formik";
-import Button from "../../components/Button";
-import Input from "../../components/login/Input";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../services/authService";
+import { Input, Button, Form, message } from "antd";
 
 const authService = new AuthService();
 
@@ -21,50 +20,52 @@ const RegisterPage = () => {
         email: values.email || "",
         password: values.password || "",
       });
-      if (register.status === 200) {
-        alert("Đăng kí thành công");
+      if (register.status === 201) {
+        message.success("Đăng kí thành công");
         navigate("/login");
       }
     },
   });
 
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-gray-100">
-      <div className="w-[400px] bg-white rounded-lg p-6">
-        <form onSubmit={handleSubmit}>
-          <h1 className="font-bold text-xl text-center mb-4">Đăng ký</h1>
-          <Input
-            type="text"
-            name="fullname"
-            placeholder="Full name"
-            className="mb-4"
-            onChange={handleChange}
-            value={values.fullname}
-          />
-          <Input
-            type="text"
-            name="email"
-            placeholder="Email"
-            className="mb-4"
-            onChange={handleChange}
-            value={values.email}
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="mb-4"
-            onChange={handleChange}
-            value={values.password}
-          />
-          <div className="mb-4">
-            Bạn đã có tài khoản chưa,{" "}
-            <Link to="/login" className="text-blue-500">
-              Đăng nhập
-            </Link>
+    <div>
+      <div>
+        <Form onSubmitCapture={handleSubmit} layout="vertical">
+          <h1>Đăng ký</h1>
+          <Form.Item label="Fullname">
+            <Input
+              type="text"
+              name="fullname"
+              placeholder="Full name"
+              onChange={handleChange}
+              value={values.fullname}
+            />
+          </Form.Item>
+          <Form.Item label="Email">
+            <Input
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={values.email}
+            />
+          </Form.Item>
+          <Form.Item label="Password">
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={values.password}
+            />
+          </Form.Item>
+          <div>
+            Bạn đã có tài khoản chưa, <Link to="/login">Đăng nhập</Link>
           </div>
-          <Button type="submit">Sign up</Button>
-        </form>
+          <Button type="primary" htmlType="submit">
+            Sign up
+          </Button>
+        </Form>
       </div>
     </div>
   );
