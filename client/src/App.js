@@ -4,13 +4,11 @@ import AuthProvider from "./contexts/AuthContext/AuthProvider.js";
 import routes from "./routers/config.js";
 import NotAuthRoute from "./routers/NotAuthRoute";
 import PrivateRoute from "./routers/PrivateRoute";
-import MyInfo from "./components/MyInfo";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <MyInfo />
         <div className="app">
           <Routes>
             {routes.map((route, index) => {
