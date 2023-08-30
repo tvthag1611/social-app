@@ -10,7 +10,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <PassWord />
+        {/* <PassWord /> */}
 
         <div className="app">
           <Routes>
