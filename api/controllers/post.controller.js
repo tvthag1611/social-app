@@ -1,6 +1,6 @@
 import PostModel from "../models/post.model.js";
 
-export const postController = async (req, res) => {
+const createPost = async (req, res) => {
   const { title, image, content } = req.body;
 
   try {
