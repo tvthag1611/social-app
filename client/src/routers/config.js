@@ -1,11 +1,12 @@
 import LoginPage from "../pages/login/index.js";
 import PassWord from "../pages/password/index.js";
 import RegisterPage from "../pages/register/index.js";
+import HomePage from "../pages/home/Home.js";
 
 export const routes = [
   {
     path: "/",
-    component: <div>Home</div>,
+    component: <HomePage />,
     isPrivate: true,
   },
   {
