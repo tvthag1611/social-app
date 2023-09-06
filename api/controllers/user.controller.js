@@ -131,4 +131,29 @@ const getById = async (req, res) => {
   }
 };
 
-export { createUser, getAll, getById, updateUser };
+// [PUT] /users/update/info
+const updateInfo = async (req, res) => {
+  try {
+    const { id } = req.users;
+    const { cover, avatar, name, address, bio } = req.body;
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { _id: id },
+      {
+        cover,
+        avatar,
+        name,
+        address,
+        bio,
+      },
+      { new: true }
+    ).select("-password");
+    res.status(200).json({
+      user: updatedUser,
+      message: "Successfully",
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+export { createUser, getAll, getById, updateUser, updateInfo };
