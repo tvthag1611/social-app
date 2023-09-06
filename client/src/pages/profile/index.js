@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-const Profile = () => {
+const ProfilePage = () => {
     return (
         <div>
             <div className="p-5">
@@ -95,4 +94,4 @@ const Tile = () => {
 };
 
 
-export default Profile;
+export default ProfilePage;
